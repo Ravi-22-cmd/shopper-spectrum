@@ -8,18 +8,14 @@ from sklearn.cluster import KMeans
 from sklearn.metrics.pairwise import cosine_similarity
 import time
 
-# =====================================================
 # CORE NEXUS CONFIGURATION
-# =====================================================
 st.set_page_config(
     page_title="NEXUS OS | DIGITAL RAIN",
     page_icon="🌌",
     layout="wide",
 )
 
-# =====================================================
 # MATRIX RAIN & CYBERPUNK CSS
-# =====================================================
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap');
@@ -96,9 +92,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# =====================================================
 # DATA ENGINE
-# =====================================================
 @st.cache_data
 def load_nexus_data():
     try:
@@ -113,9 +107,7 @@ def load_nexus_data():
 
 df = load_nexus_data()
 
-# =====================================================
 # COMPONENTS
-# =====================================================
 def draw_counter(label, value, prefix=""):
     html = f"""
     <div class="cyber-card">
@@ -141,9 +133,7 @@ def draw_counter(label, value, prefix=""):
     """
     st.components.v1.html(html, height=130)
 
-# =====================================================
 # NAVIGATION & SIDEBAR
-# =====================================================
 with st.sidebar:
     st.markdown("<h1 style='font-size: 1rem;'>NEXUS TERMINAL</h1>", unsafe_allow_html=True)
     mode = st.radio("INTERFACE", ["🛰️ DASHBOARD", "🧠 NEURAL MAP", "⚡ SYNC ENGINE"])
@@ -152,9 +142,8 @@ with st.sidebar:
 
 df_view = df if region == "GLOBAL" else df[df["Country"] == region]
 
-# =====================================================
 # INTERFACE LOGIC
-# =====================================================
+
 if mode == "🛰️ DASHBOARD":
     st.markdown("<h2>System Metrics</h2>", unsafe_allow_html=True)
     if not df_view.empty:
