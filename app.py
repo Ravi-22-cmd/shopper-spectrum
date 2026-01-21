@@ -143,7 +143,6 @@ with st.sidebar:
 df_view = df if region == "GLOBAL" else df[df["Country"] == region]
 
 # INTERFACE LOGIC
-
 if mode == "🛰️ DASHBOARD":
     st.markdown("<h2>System Metrics</h2>", unsafe_allow_html=True)
     if not df_view.empty:
